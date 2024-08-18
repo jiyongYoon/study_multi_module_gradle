@@ -50,6 +50,7 @@ subprojects {
 }
 
 // public static void main 함수가 없는 프로젝트의 경우 bootJar를 없애주어야 빌드에러가 안생김. (bootJar -> build 순서라서)
+// 실제 배포는 server- 모듈들만 배포하면 되기 때문에
 rootProject.subprojects {
     if (!it.name.startsWith("server-")) {
         it.tasks["bootJar"].enabled = false

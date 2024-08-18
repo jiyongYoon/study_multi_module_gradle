@@ -18,7 +18,7 @@ dependencies {
         moduleDir.mkdirs()
     }
 
-    // moduleDir 아래에는 생성할 module directory를 직접 추가
+    // moduleDir 아래에는 생성할 module directory를 직접 추가해야함
 
     moduleDir.eachFile { subProjectDir ->
         def buildFile = file(subProjectDir, "build.gradle")

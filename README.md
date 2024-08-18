@@ -154,3 +154,7 @@ drwxrwxrwx 1 ubuntu ubuntu 4096 Aug 16 22:59 gradle/
 ### 의존성
 
 `jy` <- `web` <- `server`
+
+### 실제 구현
+
+- `settings.gradle`, `build.gradle` 파일 참고!
