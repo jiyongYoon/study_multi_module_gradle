@@ -1,0 +1,7 @@
+
+
+dependencies {
+
+    // 의존성 전이가 일어나지 않음. 나만 web-files를 의존함.
+    implementation(project(":web-files"))
+}

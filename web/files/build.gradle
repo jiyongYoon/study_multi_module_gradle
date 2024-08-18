@@ -1,0 +1,7 @@
+
+
+dependencies {
+    // web에서는 business component가 필요할 것 -> api로 참조함
+    // api는 나를 의존하는 프로젝트들에도 의존성 전이가 일어남
+    api(project(":jy-files"))
+}

@@ -1,0 +1,57 @@
+println '(/root) this project name = ' + project.name
+
+
+// root
+buildscript {
+    ext {
+        spring = "org.springframework"
+        boot = "${spring}.boot"
+        bootVersion = "2.7.14"
+        lombok = "org.projectlombok:lombok"
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "$boot:spring-boot-gradle-plugin:$bootVersion"
+    }
+}
+
+allprojects {
+    group("com.jy.unitt")
+    version("1.0.0")
+}
+
+subprojects {
+    apply plugin: "java-library" // java plugin
+    apply plugin: boot // boot plugin
+    apply plugin: "io.spring.dependency-management"
+
+    repositories {
+        mavenCentral()
+    }
+
+    configurations {
+        compileOnly
+    }
+
+    dependencies {
+        compileOnly lombok
+        annotationProcessor lombok
+
+        testImplementation "$boot:spring-boot-starter-test"
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
+// public static void main 함수가 없는 프로젝트의 경우 bootJar를 없애주어야 빌드에러가 안생김. (bootJar -> build 순서라서)
+rootProject.subprojects {
+    if (!it.name.startsWith("server-")) {
+        it.tasks["bootJar"].enabled = false
+    }
+}

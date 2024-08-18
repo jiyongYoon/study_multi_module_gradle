@@ -1,0 +1,2 @@
+println '(/root/comp/tests/) this project name = ' + project.name
+println '(/root/comp/tests/) this project parent name = ' + project.parent.name
